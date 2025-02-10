@@ -25,14 +25,19 @@
         <button id="prev-year" class="navigate-arrow">«</button>
         <button id="prev-month" class="navigate-arrow">‹</button>
         <select type="select" name="selecting-day" id="selecting-day"></select>
-        <div>&#47;</div>
+        <div class="middle-slash">&#47;</div>
         <select
           type="select"
           name="selecting-month"
           id="selecting-month"
         ></select>
-        <div>&#47;</div>
-        <input type="number" name="selecting-year" id="selecting-year" />
+        <div class="middle-slash">&#47;</div>
+        <input
+          type="number"
+          name="selecting-year"
+          id="selecting-year"
+          min="1000"
+        />
         <button id="ok">OK</button>
         <button id="next-month" class="navigate-arrow">›</button>
         <button id="next-year" class="navigate-arrow">»</button>

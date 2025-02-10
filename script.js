@@ -15,7 +15,6 @@ const nextYearBtn = document.querySelector("#next-year");
 const dayTodayBtn = document.querySelector("#day-today");
 const okBtn = document.querySelector("#ok");
 
-const today = new Date();
 let selectedDate = new Date();
 let selectedDayInSelectorElement = null;
 updateSelector();
@@ -72,28 +71,13 @@ function updateSelector() {
   lastDay.setMonth(lastDay.getMonth() + 1);
   lastDay.setDate(0);
 
-  console.log(lastDay.getDate());
   for (let i = 1; i <= lastDay.getDate(); i++) {
     let tmp = document.createElement("div");
     tmp.classList.add("day-in-selector");
     tmp.textContent = i;
 
     tmp.addEventListener("click", (e) => {
-      day.textContent = selectedDate.getDate();
-      e.target.classList.add("selected-day-in-selector");
-      if (
-        selectedDayInSelectorElement != null ||
-        selectedDayInSelectorElement != undefined
-      ) {
-        selectedDayInSelectorElement.classList.remove(
-          "selected-day-in-selector"
-        );
-      }
-      selectedDayInSelectorElement = e.target;
-      day.textContent = e.target.textContent;
-      let tmp = new Date(selectedDate);
-      tmp.setDate(e.target.textContent);
-      dayofweek.textContent = convertToDayOfWeek(tmp.getDay());
+      selectedDayInSelectorClickHandler(e);
     });
 
     if (i == selectedDate.getDate()) {
@@ -113,7 +97,7 @@ function updateSelector() {
 function dateValidate() {
   if (selectingYear.value <= 1900) {
     alert("Ngày không tồn tại");
-    return;
+    return false;
   }
 
   let tmp = new Date(
@@ -122,19 +106,33 @@ function dateValidate() {
     selectingDay.value
   );
 
-  console.log(tmp.getFullYear());
-
   if (!tmp.getFullYear()) {
     alert("Ngày không tồn tại");
-    return;
+    return false;
   }
 
   if (tmp.getMonth() != selectingMonth.value) {
     alert("Ngày không tồn tại");
-    return;
+    return false;
   }
 
   selectedDate = tmp;
+  return true;
+}
+
+function selectedDayInSelectorClickHandler(e) {
+  e.target.classList.add("selected-day-in-selector");
+  if (
+    selectedDayInSelectorElement != null ||
+    selectedDayInSelectorElement != undefined
+  ) {
+    selectedDayInSelectorElement.classList.remove("selected-day-in-selector");
+  }
+  selectedDayInSelectorElement = e.target;
+  day.textContent = e.target.textContent;
+  let tmp = new Date(selectedDate);
+  tmp.setDate(e.target.textContent);
+  dayofweek.textContent = convertToDayOfWeek(tmp.getDay());
 }
 
 function okBtnHandler() {

@@ -3,7 +3,7 @@
   width: fit-content;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 10px 14px;
+  padding: 10px 16px;
 }
 
 .month-year {
@@ -34,7 +34,7 @@
   border: 1px solid black;
   border-radius: 8px;
   display: grid;
-  padding: 5px;
+  padding: 6px;
   grid-template-columns: auto auto auto auto auto auto auto;
   gap: 3px 3px;
 }
@@ -83,6 +83,10 @@
 #ok,
 #day-today {
   background-color: #f0ffff;
+}
+
+.middle-slash {
+  margin: 0 14px;
 }
 
 button {
