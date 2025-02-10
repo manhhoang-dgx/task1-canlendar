@@ -1,0 +1,85 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.calendar {
+  font-family: "Times New Roman", Times, serif;
+  width: fit-content;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.month-year {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 20px auto;
+  background-color: #9acd32;
+  width: 100;
+}
+
+.day {
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  margin: 40px auto;
+}
+
+.day-of-week {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 32px;
+  margin: 24px auto;
+}
+
+.day-selector {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 8px;
+  display: grid;
+  padding: 5px;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  gap: 4px 4px;
+}
+
+.dow-in-selector {
+  padding: 0 5px;
+  width: 100px;
+  background-color: #cbdda7;
+}
+
+.day-in-selector {
+  background-color: #dee6cf;
+  height: 50px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigate {
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0 10px 0;
+  display: flex;
+}
+
+.navigate * {
+  margin: 0 5px;
+}
+
+.navigate-arrow {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+button {
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+}
