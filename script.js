@@ -19,6 +19,8 @@ const today = new Date();
 let selectedDate = new Date();
 let selectedDayInSelectorElement = null;
 
+updateSelector();
+
 for (let i = 1; i <= 31; i++) {
   let tmp = document.createElement("option");
   tmp.value = i;
@@ -91,6 +93,10 @@ function updateSelector() {
       tmp.setDate(e.target.textContent);
       dayofweek.textContent = convertToDayOfWeek(tmp.getDay());
     });
+    if (i == selectedDate.getDate()) {
+      tmp.classList.add("selected-day-in-selector");
+      selectedDayInSelectorElement = tmp;
+    }
     daySelector.appendChild(tmp);
   }
 
@@ -110,6 +116,42 @@ function okBtnHandler() {
   updateSelector();
 }
 
+function prevYearBtnHandler() {
+  selectedDate.setFullYear(selectedDate.getFullYear() - 1);
+  updateSelector();
+}
+
+function prevMonthBtnHandler() {
+  selectedDate.setMonth(selectedDate.getMonth() - 1);
+  updateSelector();
+}
+
+function nextMonthBtnHandler() {
+  selectedDate.setMonth(selectedDate.getMonth() + 1);
+  updateSelector();
+}
+
+function nextYearBtnHandler() {
+  selectedDate.setFullYear(selectedDate.getFullYear() + 1);
+  updateSelector();
+}
+
+prevYearBtn.addEventListener("click", () => {
+  prevYearBtnHandler();
+});
+
+prevMonthBtn.addEventListener("click", () => {
+  prevMonthBtnHandler();
+});
+
 okBtn.addEventListener("click", () => {
   okBtnHandler();
+});
+
+nextMonthBtn.addEventListener("click", () => {
+  nextMonthBtnHandler();
+});
+
+nextYearBtn.addEventListener("click", () => {
+  nextYearBtnHandler();
 });
