@@ -60,6 +60,7 @@ function updateSelector() {
 
   let firstDay = new Date(selectedDate);
   firstDay.setDate(1);
+
   for (let i = 0; i < firstDay.getDay(); i++) {
     daySelector
       .appendChild(document.createElement("div"))
@@ -67,8 +68,11 @@ function updateSelector() {
   }
 
   let lastDay = new Date(selectedDate);
+  lastDay.setDate(1);
   lastDay.setMonth(lastDay.getMonth() + 1);
   lastDay.setDate(0);
+
+  console.log(lastDay.getDate());
   for (let i = 1; i <= lastDay.getDate(); i++) {
     let tmp = document.createElement("div");
     tmp.classList.add("day-in-selector");
@@ -91,6 +95,7 @@ function updateSelector() {
       tmp.setDate(e.target.textContent);
       dayofweek.textContent = convertToDayOfWeek(tmp.getDay());
     });
+
     if (i == selectedDate.getDate()) {
       tmp.classList.add("selected-day-in-selector");
       selectedDayInSelectorElement = tmp;
@@ -105,7 +110,7 @@ function updateSelector() {
   dayofweek.textContent = convertToDayOfWeek(selectedDate.getDay());
 }
 
-function okBtnHandler() {
+function dateValidate() {
   if (selectingYear.value <= 1900) {
     alert("Ngày không tồn tại");
     return;
@@ -124,7 +129,16 @@ function okBtnHandler() {
     return;
   }
 
+  if (tmp.getMonth() != selectingMonth.value) {
+    alert("Ngày không tồn tại");
+    return;
+  }
+
   selectedDate = tmp;
+}
+
+function okBtnHandler() {
+  dateValidate();
   updateSelector();
 }
 
