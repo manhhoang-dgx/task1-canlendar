@@ -7,7 +7,7 @@ body {
   width: fit-content;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 10px 14px;
 }
 
 .month-year {
@@ -16,7 +16,6 @@ body {
   font-size: 24px;
   margin: 20px auto;
   background-color: #9acd32;
-  width: 100;
 }
 
 .day {
@@ -41,13 +40,14 @@ body {
   display: grid;
   padding: 5px;
   grid-template-columns: auto auto auto auto auto auto auto;
-  gap: 4px 4px;
+  gap: 3px 3px;
 }
 
 .dow-in-selector {
   padding: 0 5px;
   width: 100px;
   background-color: #cbdda7;
+  margin-bottom: 3px;
 }
 
 .day-in-selector {

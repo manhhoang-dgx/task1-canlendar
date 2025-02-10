@@ -106,11 +106,25 @@ function updateSelector() {
 }
 
 function okBtnHandler() {
-  selectedDate = new Date(
+  if (selectingYear.value <= 1900) {
+    alert("Ngày không tồn tại");
+    return;
+  }
+
+  let tmp = new Date(
     selectingYear.value,
     selectingMonth.value,
     selectingDay.value
   );
+
+  console.log(tmp.getFullYear());
+
+  if (!tmp.getFullYear()) {
+    alert("Ngày không tồn tại");
+    return;
+  }
+
+  selectedDate = tmp;
   updateSelector();
 }
 
