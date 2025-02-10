@@ -18,7 +18,6 @@ const okBtn = document.querySelector("#ok");
 const today = new Date();
 let selectedDate = new Date();
 let selectedDayInSelectorElement = null;
-
 updateSelector();
 
 for (let i = 1; i <= 31; i++) {
@@ -153,4 +152,9 @@ nextMonthBtn.addEventListener("click", () => {
 
 nextYearBtn.addEventListener("click", () => {
   nextYearBtnHandler();
+});
+
+dayTodayBtn.addEventListener("click", () => {
+  selectedDate = new Date();
+  updateSelector();
 });
