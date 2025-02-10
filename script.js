@@ -70,7 +70,6 @@ function updateSelector() {
   let lastDay = new Date(selectedDate);
   lastDay.setMonth(lastDay.getMonth() + 1);
   lastDay.setDate(0);
-  console.log(lastDay.getDate());
   for (let i = 1; i <= lastDay.getDate(); i++) {
     let tmp = document.createElement("div");
     tmp.classList.add("day-in-selector");
