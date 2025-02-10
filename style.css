@@ -59,6 +59,10 @@ body {
   align-items: center;
 }
 
+.selected-day-in-selector {
+  background-color: #9acd32;
+}
+
 .navigate {
   margin: auto;
   justify-content: center;
@@ -74,6 +78,15 @@ body {
 .navigate-arrow {
   font-size: 20px;
   font-weight: bold;
+}
+
+#selecting-year {
+  width: 70px;
+}
+
+#ok,
+#day-today {
+  background-color: #f0ffff;
 }
 
 button {
