@@ -15,6 +15,16 @@ const nextYearBtn = document.querySelector("#next-year");
 const dayTodayBtn = document.querySelector("#day-today");
 const okBtn = document.querySelector("#ok");
 
+const daysOfWeek = [
+  "Chủ nhật",
+  "Thứ 2",
+  "Thứ 3",
+  "Thứ 4",
+  "Thứ 5",
+  "Thứ 6",
+  "Thứ 7",
+];
+
 let selectedDate = new Date();
 let selectedDayInSelectorElement = null;
 updateSelector();
@@ -34,24 +44,8 @@ for (let i = 1; i <= 12; i++) {
 }
 
 function convertToDayOfWeek(day) {
-  switch (day) {
-    case 0:
-      return "Chủ nhật";
-    case 1:
-      return "Thứ 2";
-    case 2:
-      return "Thứ 3";
-    case 3:
-      return "Thứ 4";
-    case 4:
-      return "Thứ 5";
-    case 5:
-      return "Thứ 6";
-    case 6:
-      return "Thứ 7";
-  }
+  return daysOfWeek[day] || "";
 }
-
 function updateSelector() {
   document.querySelectorAll(".day-in-selector").forEach((day) => {
     day.remove();
@@ -140,32 +134,21 @@ function okBtnHandler() {
   updateSelector();
 }
 
-function prevYearBtnHandler() {
-  selectedDate.setFullYear(selectedDate.getFullYear() - 1);
-  updateSelector();
-}
-
-function prevMonthBtnHandler() {
-  selectedDate.setMonth(selectedDate.getMonth() - 1);
-  updateSelector();
-}
-
-function nextMonthBtnHandler() {
-  selectedDate.setMonth(selectedDate.getMonth() + 1);
-  updateSelector();
-}
-
-function nextYearBtnHandler() {
-  selectedDate.setFullYear(selectedDate.getFullYear() + 1);
+function updateDate(type, value) {
+  if (type === "year") {
+    selectedDate.setFullYear(selectedDate.getFullYear() + value);
+  } else if (type === "month") {
+    selectedDate.setMonth(selectedDate.getMonth() + value);
+  }
   updateSelector();
 }
 
 prevYearBtn.addEventListener("click", () => {
-  prevYearBtnHandler();
+  updateDate("year", -1);
 });
 
 prevMonthBtn.addEventListener("click", () => {
-  prevMonthBtnHandler();
+  updateDate("month", -1);
 });
 
 okBtn.addEventListener("click", () => {
@@ -173,11 +156,11 @@ okBtn.addEventListener("click", () => {
 });
 
 nextMonthBtn.addEventListener("click", () => {
-  nextMonthBtnHandler();
+  updateDate("month", 1);
 });
 
 nextYearBtn.addEventListener("click", () => {
-  nextYearBtnHandler();
+  updateDate("year", 1);
 });
 
 dayTodayBtn.addEventListener("click", () => {
